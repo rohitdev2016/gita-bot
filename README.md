@@ -1,61 +1,61 @@
-Welcome to your Lovable project
-Project info
-URL: https://lovable.dev/projects/3584e2b9-c1a8-41ad-810d-8c8c917d7b90
+# 📘 Gita‑Bot
 
-How can I edit this code?
-There are several ways of editing your application.
+A multilingual Bhagavad Gītā chatbot built with Next.js, Tailwind CSS, OpenAI, and LangChain—supporting English, Hindi & Telugu. Hosted for free on Vercel, empowering users to seek spiritual wisdom and guidance.
 
-Use Lovable
+---
 
-Simply visit the Lovable Project and start prompting.
+## 🚀 Live Demo
 
-Changes made via Lovable will be committed automatically to this repo.
+Check out the live version here:  
+**https://your-deployed-url.vercel.app**  *(Replace with your actual URL)*
 
-Use your preferred IDE
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🧭 Features
 
-The only requirement is having Node.js & npm installed - install with nvm
+- **Multilingual chat**: User-selectable output in English, Hindi & Telugu
+- **PDF-based knowledge**: Answers drawn directly from Bhagavad Gītā PDFs (English/Hindi/Telugu)
+- **RAG-powered responses**: Retrieval-augmented with LangChain + OpenAI for accurate verse references
+- **Personal question mode**: Compassionate, verse-enabled replies for life queries
+- **Mobile-first, 21st.dev–inspired UI**: Clean, responsive, accessible interface built with Tailwind and 21st.dev components
+- **Free hosting**: Deployed via Vercel's Hobby plan—no cost to end users
 
-Follow these steps:
+---
 
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🧩 How It Works
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **PDF ingestion**  
+   - Preprocesses your Gītā PDFs into small text chunks  
+   - Embeds chunks via OpenAIEmbeddings & stores in Chroma vector database
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. **User query flow**  
+   - Frontend sends `{ question, languages }` to `/api/chat`  
+   - Backend retrieves relevant verse chunks via similarity search  
+   - Composes a prompt combining:
+     - System guidance ("You are a spiritual guide…")  
+     - Retrieved verse snippets  
+     - User’s question  
+   - Requests GPT‑4.1 (or your preferred model) to answer per selected language
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. **Frontend display**  
+   - Renders responses in card/tabs per language  
+   - Shows errors, loading states, and validations gracefully
+
+---
+
+## ⚙️ Local Setup
+
+To run locally:
+
+```bash
+git clone https://github.com/rohitdev2016/gita-bot.git
+cd gita-bot
+
+# Install dependencies
+npm install
+
+# Add your OpenAI key
+export OPENAI_API_KEY="sk‑YOURKEY"
+
+# Run the app
 npm run dev
-Edit a file directly in GitHub
-
-Navigate to the desired file(s).
-Click the "Edit" button (pencil icon) at the top right of the file view.
-Make your changes and commit the changes.
-Use GitHub Codespaces
-
-Navigate to the main page of your repository.
-Click on the "Code" button (green button) near the top right.
-Select the "Codespaces" tab.
-Click on "New codespace" to launch a new Codespace environment.
-Edit files directly within the Codespace and commit and push your changes once you're done.
-What technologies are used for this project?
-This project is built with:
-
-Vite
-TypeScript
-React
-shadcn-ui
-Tailwind CSS
-How can I deploy this project?
-Simply open Lovable and click on Share -> Publish.
-
-Can I connect a custom domain to my Lovable project?
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: Setting up a custom domain
