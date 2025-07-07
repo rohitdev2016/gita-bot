@@ -25,14 +25,17 @@ const Chat = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // Auto-scroll to bottom when messages change
   const scrollToBottom = () => {
     setTimeout(() => {
-      messagesEndRef.current?.scrollIntoView({ 
-        behavior: "smooth",
-        block: "end"
-      });
+      if (chatContainerRef.current) {
+        chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+      }
+      // Keep input focused
+      inputRef.current?.focus();
     }, 100);
   };
 
@@ -125,7 +128,7 @@ const Chat = () => {
       </div>
 
       {/* Chat Area */}
-      <div className="flex-1 container mx-auto p-4 max-w-4xl overflow-y-auto">
+      <div ref={chatContainerRef} className="flex-1 container mx-auto p-4 max-w-4xl overflow-y-auto">
         {messages.length === 0 ? (
           <div className="flex items-center justify-center h-full">
             <Card className="p-8 text-center max-w-md shadow-gentle">
@@ -172,6 +175,7 @@ const Chat = () => {
         <div className="container mx-auto max-w-4xl">
           <div className="flex gap-2">
             <Input
+              ref={inputRef}
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               onKeyPress={handleKeyPress}
