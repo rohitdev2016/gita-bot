@@ -1,73 +1,151 @@
-# Welcome to your Lovable project
+# 🙏 Gita‑Bot
 
-## Project info
+A multilingual Bhagavad Gītā chatbot built with Next.js, LangChain, and OpenAI. Ask questions about life, duty, or spirituality—and receive verse-based answers in **English**, **Telugu**, and **Hindi**.
 
-**URL**: https://lovable.dev/projects/3584e2b9-c1a8-41ad-810d-8c8c917d7b90
+---
 
-## How can I edit this code?
+## 🌟 Live Demo
 
-There are several ways of editing your application.
+Your chatbot is publicly available at:  
+**https://YOUR-VERCEL-URL.vercel.app/**
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3584e2b9-c1a8-41ad-810d-8c8c917d7b90) and start prompting.
+## 🔍 Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Multilingual Support** – Ask questions and receive answers in English, Telugu, and Hindi (select one or multiple languages).
+- **Verse Retrieval** – Uses retrieval-augmented generation (RAG) to fetch relevant Bhagavad Gītā verses.
+- **GPT‑Powered Answers** – Powered by OpenAI’s GPT‑4 (or similar) model for insightful, contextual responses.
+- **Empathetic Mode** – Personal/life-question detection triggers compassionate, verse-based guidance.
+- **Mobile‑First & Clean UI** – Styled with Tailwind CSS and 21st.dev components for a warm, accessible experience.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🗂 Project Structure
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+gita-bot/
+├── data/
+│ └── *.pdf # Bhagavad Gītā PDFs (English, Telugu, Hindi)
+├── lib/
+│ ├── ingest.js # PDF ingestion & embedding logic
+│ └── chat.js # Retrieval + OpenAI chat integration
+├── pages/ or app/
+│ ├── index.js # Home / chat UI
+│ └── api/chat.js # Next.js API route for handling user queries
+├── public/ # Static assets (logo, icons)
+├── styles/ # Global styles (Tailwind CSS)
+└── package.json, etc.
 
-Follow these steps:
+yaml
+Copy
+Edit
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## ⚙️ Setup & Local Development
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/rohitdev2016/gita-bot.git
+   cd gita-bot
+Install dependencies
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+bash
+Copy
+Edit
+npm install
+Add your OpenAI API key
+
+bash
+Copy
+Edit
+export OPENAI_API_KEY="your_openai_api_key"
+Ingest PDFs to build vector store
+
+bash
+Copy
+Edit
+node lib/ingest.js
+Run the development server
+
+bash
+Copy
+Edit
 npm run dev
-```
+Visit http://localhost:3000
 
-**Edit a file directly in GitHub**
+🚀 Deployment on Vercel
+Push your project to GitHub:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+bash
+Copy
+Edit
+git add .
+git commit -m "Initial deploy"
+git push origin main
+Connect your repository on Vercel.com.
 
-**Use GitHub Codespaces**
+Add OPENAI_API_KEY in the Vercel Project Settings.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Deploy: Vercel auto-deploys the app, making it live with its own domain.
 
-## What technologies are used for this project?
+🧠 Technical Details
+PDF → Embeddings: Uses LangChain’s PDFLoader and TextSplitter, generates embeddings stored in ChromaDB.
 
-This project is built with:
+Similarity Search: Retrieves top relevant verse chunks using user questions.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Prompt Engineering: Constructs contextual prompts for GPT‑4 with selected verses and instructions in chosen languages.
 
-## How can I deploy this project?
+Chat API: Accepts JSON ({ question, languages }), returns replies per language.
 
-Simply open [Lovable](https://lovable.dev/projects/3584e2b9-c1a8-41ad-810d-8c8c917d7b90) and click on Share -> Publish.
+💬 Usage Tips
+Try:
 
-## Can I connect a custom domain to my Lovable project?
+“What is dharma?”
 
-Yes, you can!
+“I’m feeling anxious about my job.”
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Select multiple languages to compare translations.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+If no verse is found, GPT gives general advice (fallback behavior).
+
+🛠 Troubleshooting
+No responses? Ensure PDF ingestion succeeded and the data/ folder exists.
+
+Timeouts or errors? Check Vercel logs to inspect /api/chat runtime behavior.
+
+Model issues? Confirm your OpenAI key is correct and GPT‑4 access is enabled.
+
+🧩 Future Enhancements
+Add more languages (e.g., Sanskrit, Kannada).
+
+UI improvements: avatars, theme toggle, user session history.
+
+Authentication and favorite quotes tracking.
+
+Analytics on most asked questions.
+
+🤝 Contributing
+Contributions are welcome! To help:
+
+Fork the repo
+
+Create a feature branch: git checkout -b feature-name
+
+Commit your changes: git commit -m "Add your feature"
+
+Push and open a Pull Request
+
+📄 License
+This project is released under the MIT License.
+
+May Gītā’s wisdom guide every seeker. 🙏
+
+yaml
+Copy
+Edit
+
+---
+
+Let me know if you'd like badges for build status, OpenAI usage metrics, or screenshots added!
+::contentReference[oaicite:0]{index=0}
