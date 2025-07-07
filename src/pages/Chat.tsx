@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -24,6 +24,19 @@ const Chat = () => {
   const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to bottom when messages change
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ 
+      behavior: "smooth",
+      block: "end"
+    });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isLoading]);
 
   const handleSendMessage = async () => {
     if (!inputText.trim()) {
@@ -110,7 +123,7 @@ const Chat = () => {
       </div>
 
       {/* Chat Area */}
-      <div className="flex-1 container mx-auto p-4 max-w-4xl">
+      <div className="flex-1 container mx-auto p-4 max-w-4xl overflow-y-auto">
         {messages.length === 0 ? (
           <div className="flex items-center justify-center h-full">
             <Card className="p-8 text-center max-w-md shadow-gentle">
@@ -146,6 +159,8 @@ const Chat = () => {
                 </Card>
               </div>
             )}
+            {/* Invisible element to scroll to */}
+            <div ref={messagesEndRef} />
           </div>
         )}
       </div>
