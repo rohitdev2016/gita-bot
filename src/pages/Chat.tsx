@@ -230,6 +230,13 @@ const Chat = () => {
                   <Send className="h-4 w-4" />
                 </Button>
               </div>
+              
+              {/* Footer Attribution */}
+              <div className="text-center mt-4 pt-4 border-t border-border/20">
+                <p className="text-xs text-muted-foreground">
+                  Designed and crafted by Rohith Kumar Singirikonda
+                </p>
+              </div>
             </div>
           </div>
         </div>

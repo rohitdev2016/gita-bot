@@ -107,7 +107,7 @@ const Home = () => {
       {/* Footer */}
       <footer className="container mx-auto px-4 py-8 text-center border-t border-border/50">
         <p className="text-muted-foreground">
-          Made with 📖 by a seeker of truth
+          Designed and crafted by Rohith Kumar Singirikonda
         </p>
       </footer>
     </div>
