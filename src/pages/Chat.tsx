@@ -233,8 +233,11 @@ const Chat = () => {
               
               {/* Footer Attribution */}
               <div className="text-center mt-4 pt-4 border-t border-border/20">
+                <p className="text-xs text-muted-foreground/80 mb-1 italic">
+                  "Bhagavad Gita is for all — from warriors to wanderers."
+                </p>
                 <p className="text-xs text-muted-foreground">
-                  Designed and crafted by Rohith Kumar Singirikonda
+                  🧑‍💻 Crafted with devotion by Rohith Kumar Singirikonda
                 </p>
               </div>
             </div>
