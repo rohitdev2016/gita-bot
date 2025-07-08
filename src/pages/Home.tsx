@@ -10,19 +10,19 @@ const Home = () => {
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <span className="om-symbol">ॐ</span>
             <h1 className="text-2xl font-cinzel font-bold gradient-spiritual bg-clip-text text-transparent">
               Gītā Wisdom
             </h1>
-          </div>
+          </Link>
         </div>
       </header>
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 text-center">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-8">
+          <div className="mb-8 -mt-12">
             <img 
               src={heroImage} 
               alt="Spiritual Wisdom" 
